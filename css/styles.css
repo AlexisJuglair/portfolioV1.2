@@ -21,15 +21,16 @@ body
     
 }
 
-.container
+main>section>div, 
+header>nav>div
 {
     max-width: 1140px;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-}
+}    
 
-.container-mp
+main>section>div 
 {
     margin-bottom: 3rem;
 }

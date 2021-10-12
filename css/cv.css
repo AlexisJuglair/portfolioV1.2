@@ -151,6 +151,11 @@
     margin-right: 1rem;
 }
 
+.resume-work-item:last-child
+{
+    border-bottom: none;
+}
+
 .resume-work-item-heading
 {
     align-items: center;
@@ -201,11 +206,6 @@
 {
     margin-top: 0;
     margin-bottom: 1rem;
-}
-
-.no-border 
-{
-    border-bottom: none;
 }
 
 .resume-aside
@@ -343,6 +343,20 @@
     margin-right: .5rem;
     color: #767676;
     vertical-align: 5px;
+}
+
+@media (min-width: 1200px)
+{
+
+    .resume-title
+    {
+        width: 70%;
+    }
+
+    .resume-contact 
+    {
+        width: 30%;
+    }
 }
 
 @media (max-width: 991px)

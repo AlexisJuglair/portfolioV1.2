@@ -1,3 +1,12 @@
+function init()
+{
+  activeLink();
+	colorNavbar();
+  collapseNav();
+	displayTitle();
+  submitForm();
+}
+
 // Activation des liens du menu au défilement de la page
 function activeLink()
 {
@@ -36,7 +45,7 @@ function colorNavbar()
   
   window.addEventListener("scroll", function() 
   {
-    if (window.pageYOffset >= document.getElementById("curriculumVitæ").offsetTop)
+    if (window.pageYOffset >= document.getElementById("curriculumVitae").offsetTop)
     {
       items.forEach(item => 
       {
@@ -127,7 +136,7 @@ function displayTitle()
 }
 
 // Soumission du formulaire de contact (validation JS + PHP)
-(function () 
+function submitForm() 
 {
   let forms = document.querySelectorAll('.needs-validation');
 
@@ -196,4 +205,4 @@ function displayTitle()
         }
       }, false)
   })
-})();
+}
