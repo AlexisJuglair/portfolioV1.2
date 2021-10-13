@@ -4,7 +4,7 @@
         <div>
             <h5>Tutoriel site e-commerce SymShop</h5>
             <p>Réalisation d'un tutoriel de site e-commerce avec Symfony et Bootstrap.</p>
-            <a class="btn" href="#" target="_blank">
+            <a class="btn">
                 <i class="fas fa-eye"></i>
                 Voir
             </a>

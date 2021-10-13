@@ -12,14 +12,6 @@
    padding: .5rem;
 }
 
-@media screen and (max-width: 768px)
-{
-    .col
-    {
-        width: 100%;
-    }
-}
-
 .portfolio-card 
 {
     position: relative;
@@ -66,3 +58,26 @@
     margin-top: 0;
     margin-bottom: 1rem;
 }
+
+.portfolio-btn 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.portfolio-btn a
+{
+    padding: .5rem;
+    margin: .5rem;
+    height: initial;
+}
+
+@media (max-width: 768px)
+{
+    .col
+    {
+        width: 100%;
+    }
+}   
