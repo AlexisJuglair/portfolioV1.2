@@ -72,13 +72,6 @@ textarea
     font-family: 'Roboto', sans-serif;
 }
 
-.g-recaptcha
-{
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1.5rem;
-}
-
 .button-contact
 {
     gap: .5rem;

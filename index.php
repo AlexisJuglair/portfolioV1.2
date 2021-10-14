@@ -50,8 +50,29 @@
             rsort($listFolder);
             return $listFolder;
         }
-          
+        
     }
+
+    $listeQuestions = array();
+    $q = 1;
+
+    for ($i=1; $i <= 9; $i++) 
+    {
+        for ($j=1; $j <= 9; $j++) 
+        {
+            $listQuestions[$q] = array(
+                    'question' => "Combien font $i + $j ?",
+                    'answer' => $i+$j
+            );
+            $q++;
+        }
+        $j = 1;   
+    }
+
+    session_start();
+    $_SESSION['captcha']['listQuestions'] = $listQuestions;
+    $questionForm = array_rand($listQuestions);
+    $_SESSION['captcha']['answer'] = $listQuestions[$questionForm]['answer'];
 
     ?>
 
@@ -347,6 +368,12 @@
                             <textarea  id="floatingTextarea" class="form-control" placeholder="Message" name="message" required></textarea>
                             <div class="invalid-feedback">
                                 Veuillez entrer un message.
+                            </div>
+                        </div>
+                        <div class="form-floating">
+                            <input id="floatingCaptcha" class="form-control" type="text" placeholder="<?php echo $listQuestions[$questionForm]['question']; ?>" name="captcha" required>
+                            <div class="invalid-feedback">
+                                Veuillez répondre au captcha.
                             </div>
                         </div>
                         <div id="buttonContact" class="button-contact">

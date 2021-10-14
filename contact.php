@@ -1,11 +1,13 @@
 <?php
 
+session_start();
+$listQuestions = $_SESSION['captcha']['listQuestions'];
 $flag = false;
 $error = "";
 
 foreach ($_POST as $key => $value) 
 {
-    if(empty($value))
+    if (empty($value))
     {
         $flag = false;
         $error = $key;
@@ -15,7 +17,16 @@ foreach ($_POST as $key => $value)
     {
         if ($key == "email")
         {
-            if(!preg_match("#^[a-z0-9_-]+((\.[a-z0-9_-]+){1,})?@[a-z0-9_-]+((\.[a-z0-9_-]+){1,})?\.[a-z]{2,}$#i",$value))
+            if (!preg_match("#^[a-z0-9_-]+((\.[a-z0-9_-]+){1,})?@[a-z0-9_-]+((\.[a-z0-9_-]+){1,})?\.[a-z]{2,}$#i",$value))
+            {
+                $flag = false;
+                $error = $key;
+                break;
+            }
+        }
+        elseif ($key == "captcha")
+        {
+            if ($value != $_SESSION['captcha']['answer'])
             {
                 $flag = false;
                 $error = $key;
@@ -25,10 +36,13 @@ foreach ($_POST as $key => $value)
         else 
         {
             $flag = true;
-        }
-        
+        }        
     }
 }
+
+$questionForm = array_rand($listQuestions);
+$question = $listQuestions[$questionForm]['question'];
+$_SESSION['captcha']['answer'] = $listQuestions[$questionForm]['answer'];
 
 if ($flag)
 {
@@ -45,11 +59,11 @@ if ($flag)
 
     mail($monEmail,$sujet,nl2br($message),$entetes);
 
-    print 1;
+    print "OK;$question";
 }
 else
 {
-    print $error;
+    print "$error;$question";
 }
 
 ?>

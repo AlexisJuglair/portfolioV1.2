@@ -1,5 +1,6 @@
 function init()
 {
+  document.getElementById("formContact").reset();
   activeLink();
 	colorNavbar();
   collapseNav();
@@ -181,8 +182,13 @@ function submitForm()
               let divAlertBis = document.createElement("div");
               divAlertBis.className = "mx-2";
               divAlert.appendChild(divAlertBis);
+
+              let response = ajax.responseText.split(";");
+
+              document.getElementById("floatingCaptcha").value = "";
+              document.getElementById("floatingCaptcha").setAttribute("placeholder", response[1]);
               
-              if (ajax.responseText == 1)
+              if (response[0] == "OK")
               {
                 formContact.reset();
 
@@ -196,7 +202,7 @@ function submitForm()
               {
                 divAlert.className = "alert alert-danger d-flex";
                 buttonAlert.className = "fas fa-exclamation-triangle fa-lg";
-                divAlertBis.innerText = "Le champ "+ajax.responseText+" est invalide !"; 
+                divAlertBis.innerText = "Le champ "+response[0]+" est invalide !"; 
               }           
             }
           };
